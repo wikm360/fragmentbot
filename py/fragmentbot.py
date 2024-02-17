@@ -3,10 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import pyperclip
 
-Text = input("Enter Your conf : ")
+
 # Start a new instance of Chrome web browser
 driver = webdriver.Chrome()
-
+Text = "vless://890ce5ff-a200-45d4-bbed-7de6c48e8920@wikm1.ddnsking.com:2083?security=tls&type=ws&headerType=&path=wikm2083&host=media_gateway-control-protocol.mabasite.ir&sni=hyper-text-transfer-protocol.mabasite.ir&fp=chrome&alpn=#CDN-MCI"
 # Open the website
 driver.get("https://ircfspace.github.io/fragment")
 
