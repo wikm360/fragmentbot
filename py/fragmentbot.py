@@ -7,7 +7,7 @@ Text = input("Enter Your conf : ")
 driver = webdriver.Chrome()
 
 # Open the website
-driver.get("https://example.com")
+driver.get("https://ircfspace.github.io/fragment")
 
 # Find the input field using its ID 
 input_field = driver.find_element_by_id("defConfig")
