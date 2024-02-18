@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import pyperclip
 
 #Menu
@@ -25,7 +23,7 @@ if transmit == ws :
 else : 
     transmit = grpc
 uuid = input("Enter ypur UUID : ")
-
+input_port = input("port : ")
 # Start a new instance of Chrome web browser
 driver = webdriver.Chrome()
 
@@ -53,14 +51,13 @@ input_field = driver.find_element(By.ID,"uuid")
 input_field.clear()
 input_field.send_keys(uuid)
 
-# Find the button element by its ID 
-check = driver.find_element(By.ID,"checkConf")
-
-# Click the button
-check.click()
+# port
+port = driver.find_element(By.ID,"port")
+port.clear()
+port.send_keys(input_port)
 
 # click on mux
-mux = driver.find_element(By.XPATH,"//button[@data-i18n='config_switch_mux']")
+mux = driver.find_element(By.XPATH,"/html/body/div[2]/div/label[4]")
 mux.click()
 
 # click and fill length
