@@ -1,7 +1,6 @@
 config = input("enter your conf : ")
-config = str(config)
 c = config.split("&")
-type = c[0].split(":")[-1]
+type = c[0].split(":")[0]
 NAME = c[-1].split("#")[-1]
 SERVER = c[0].split("@")[1].split(':')[0]
 PORT = c[0].split("@")[1].split(':')[1].split("?")[0]
