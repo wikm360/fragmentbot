@@ -1,9 +1,17 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-import pyperclip
 import time
-
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Optional: Run in headless mode
+chrome_options.add_argument("--no-sandbox")  # Use if running as root user
+chrome_options.add_argument("--disable-dev-shm-usage")  # Use if running as root user
+chrome_options.add_experimental_option("prefs", {
+    "download.default_directory": "/home/wikm/Downloads",
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True
+})
 #Menu
 vless = "/html/body/div[2]/div/div[6]/select[1]/option[1]"
 vmess = "/html/body/div[2]/div/div[6]/select[1]/option[2]"
@@ -34,7 +42,7 @@ if transmit == "ws" :
 else : 
     transmit = grpc
 # Start a new instance of Chrome web browser
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=chrome_options)
 
 # Open the website
 driver.get("https://wikm.ir/frag/")
@@ -98,11 +106,7 @@ done.click()
 
 #click on copy button
 time.sleep(5)
-copy_button = driver.find_element(By.ID,"copyCode")
-copy_button.click()
-
-#copy from cipboard to var
-copied_text = pyperclip.paste()
-# Close the browser
-print(copied_text)
+download = driver.find_element(By.XPATH,"/html/body/div[2]/div/div[19]/div/div/div[3]/button[3]")
+download.click()
+time.sleep(5)
 driver.quit()
