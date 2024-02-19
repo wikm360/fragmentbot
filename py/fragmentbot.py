@@ -2,14 +2,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 import pyperclip
+import time
 
 #Menu
 vless = "/html/body/div[2]/div/div[6]/select[1]/option[1]"
 vmess = "/html/body/div[2]/div/div[6]/select[1]/option[2]"
 trojan = "/html/body/div[2]/div/div[6]/select[1]/option[3]"
-ws = "/html/body/div[2]/div/div[6]/select[2]/option[1]"
+ws = "/html/body/div[2]/div/div[6]/select[2]/optlion[1]"
 grpc = "/html/body/div[2]/div/div[6]/select[2]/option[2]"
-
+##
+config = input("enter your conf : ")
+config = str(config)
+c = config.split("&")
+NAME = c[-1].split("#")[-1]
+SERVER = c[0].split("@")[1].split(':')[0]
+PORT = c[0].split("@")[1].split(':')[1].split("?")[0]
+UID = c[0].split("@")[0].split("//")[1]
+SNI = c[5].split("=")[1]
+PATH = c[3].split(r"%2F")[1]
+##
 option = input("Enter your Protocol (vless=l , vmess=m , trojan=t) : ")
 if option == "l" :
     option = vless
