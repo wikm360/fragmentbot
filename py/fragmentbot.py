@@ -27,7 +27,7 @@ SERVER = c[0].split("@")[1].split(':')[0]
 PORT = c[0].split("@")[1].split(':')[1].split("?")[0]
 uuid = c[0].split("@")[0].split("//")[1]
 SNI = c[5].split("=")[1]
-PATH = c[3].split(r"%2F")[1]
+PATH = "/"+c[3].split(r"%2F")[1]
 transmit = c[1].split("=")[1]
 ##
 if type == "vless" :
