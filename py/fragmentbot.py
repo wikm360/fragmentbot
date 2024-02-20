@@ -12,13 +12,13 @@ chrome_options.add_experimental_option("prefs", {
     "download.directory_upgrade": True,
     "safebrowsing.enabled": True
 })
-#Menu
+#full-xpath
 vless = "/html/body/div[2]/div/div[6]/select[1]/option[1]"
 vmess = "/html/body/div[2]/div/div[6]/select[1]/option[2]"
 trojan = "/html/body/div[2]/div/div[6]/select[1]/option[3]"
 ws = "/html/body/div[2]/div/div[6]/select[2]/option[1]"
 grpc = "/html/body/div[2]/div/div[6]/select[2]/option[2]"
-##
+#split
 config = input("enter your conf : ")
 c = config.split("&")
 type = c[0].split(":")[0]
