@@ -3,13 +3,14 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-import pyperclip
+from urllib.parse import unquote_plus
+#import pyperclip
 import time
 
 def fragment (config) :
     chrome_options = Options()
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--headless')
+    #chrome_options.add_argument('--no-sandbox')
+    #chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
 
     ##config Detector :
@@ -145,14 +146,25 @@ def fragment (config) :
     # download.click()
     # time.sleep(5)
 
-    #click on copy code :
+    #click on show code :
     time.sleep(5)
-    copy  = driver.find_element(By.XPATH,"/html/body/div[2]/div/div[21]/div/div/div[3]/button[4]")
-    copy.click()
+    img_element = driver.find_element(By.XPATH,"/html/body/div[2]/div/div[21]/div/div/div[2]/div[1]/a/img")
+    #time.sleep(5)
+    img_src = img_element.get_attribute('src')
+    #print(img_src)
+    decoded_url = unquote_plus(img_src)
+    print(decoded_url)
+    code_url = "https" + decoded_url.split("https")[2]
+
+    ####################
+    driver.get(code_url)
     time.sleep(5)
-    copied_text = pyperclip.paste()
-    print(copied_text)
+    code = driver.find_element(By.XPATH,"/html/body/pre")
+    text = code.text
+    print(text)
 
     driver.quit()
-    return copied_text
+    # return copied_text
 
+conf = input("Enter : ")
+fragment(conf)
