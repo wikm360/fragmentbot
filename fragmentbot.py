@@ -1,20 +1,16 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import pyperclip
 import time
 
 def fragment (config) :
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Optional: Run in headless mode
-    chrome_options.add_argument("--no-sandbox")  # Use if running as root user
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Use if running as root user
-    chrome_options.add_experimental_option("prefs", {
-        "download.default_directory": "/home/wikm/Downloads",
-        "download.prompt_for_download": False,
-        "download.directory_upgrade": True,
-        "safebrowsing.enabled": True
-    })
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
 
     ##config Detector :
 
@@ -76,7 +72,7 @@ def fragment (config) :
     else : 
         transmit = grpc
     # Start a new instance of Chrome web browser
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()) , options=chrome_options)
 
     # Open the website
     driver.get("https://wikm.ir/frag/")

@@ -13,7 +13,7 @@ from fragmentbot import fragment
 
 import logging
 
-token = "####################################"
+token = "6885847902:AAG2Fn6MZr8LuJ2Md-mXLh3BYKZsx-QUKj4"
 
 logging.basicConfig(filename='error.log', level=logging.ERROR,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
